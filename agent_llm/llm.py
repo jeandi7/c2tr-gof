@@ -6,7 +6,7 @@ import time
 import threading
 import psutil
 
-OLLAMA_BASE_URL   = "https://ollama.iboo.ovh"
+OLLAMA_BASE_URL   = "URL"
 OLLAMA_MODEL_LOCAL  = "llama3.1-gof"  # custom Modelfile: num_ctx=8192 to fit 3400-token prompt
 OLLAMA_MODEL_REMOTE = "devstral-small-2:24b"
 
