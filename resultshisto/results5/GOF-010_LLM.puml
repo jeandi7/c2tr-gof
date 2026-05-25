@@ -1,0 +1,40 @@
+@startuml
+title GoF Pattern : Observer + Memento
+
+note as GoFLabel
+  **<<Observer + Memento>>**
+end note
+
+class Account {
+  + balance: float
+  + history:  List<BalanceChange>
+  + deposit(float): void
+  + withdraw(float): void
+  +  transfer(Account, float): void
+}
+class RiskManagementModule {
+  + updateBalance(Account): void
+}
+class FraudDetectionService {
+  + updateBalance(Account): void
+}
+class CustomerNotificationService {
+  + updateBalance(Account): void
+}
+class BalanceChange {
+  + timestamp: Date
+  + amount: float
+}
+interface AccountHistory {
+  + restoreBalance(Account, BalanceChange): void
+}
+
+Account --> RiskManagementModule
+Account --> FraudDetectionService
+Account --> CustomerNotificationService
+Account *--> BalanceChange
+RiskManagementModule ..> AccountHistory
+FraudDetectionService ..> AccountHistory
+CustomerNotificationService ..> AccountHistory
+GoFLabel .. Account
+@enduml

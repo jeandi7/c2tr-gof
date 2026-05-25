@@ -1,0 +1,82 @@
+{
+  "pattern": "Memento + Observer",
+  "patterns": ["Memento", "Observer"],
+  "classes": [
+    {
+      "id": "Document",
+      "name": "Document",
+      "type": "class",
+      "attributes": ["+ id: int", "+ content: String"],
+      "methods": ["+ save(): void"]
+    },
+    {
+      "id": "Memento",
+      "name": "Memento",
+      "type": "class",
+      "attributes": ["+ state: Document"],
+      "methods": ["+ saveState(): void", "+ restoreState(): void"]
+    },
+    {
+      "id": "Caretaker",
+      "name": "Caretaker",
+      "type": "class",
+      "attributes": ["+ mementos: List<Memento>"],
+      "methods": ["+ addMemento(Memento): void", "+  removeMemento(Memento): void"]
+    },
+    {
+      "id": "DocumentObserver",
+      "name": "DocumentObserver",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["+ update(Document): void"]
+    },
+    {
+      "id": "Toolbar",
+      "name": "Toolbar",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "StatusBar",
+      "name": "StatusBar",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PreviewPanel",
+      "name": "PreviewPanel",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "Document",
+      "targetId": "Memento"
+    },
+    {
+      "type": "dependency",
+      "sourceId": "Caretaker",
+      "targetId": "Memento"
+    },
+    {
+      "type": "inheritance",
+      "sourceId": "Toolbar",
+      "targetId": "DocumentObserver"
+    },
+    {
+      "type": "association",
+      "sourceId": "StatusBar",
+      "targetId": "DocumentObserver"
+    },
+    {
+      "type": "composition",
+      "sourceId": "PreviewPanel",
+      "targetId": "DocumentObserver"
+    }
+  ]
+}

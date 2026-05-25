@@ -1,0 +1,80 @@
+{
+  "pattern": "Observer + Strategy",
+  "patterns": ["Observer", "Strategy"],
+  "classes": [
+    {
+      "id": "Account",
+      "name": "Account",
+      "type": "class",
+      "attributes": ["+ balance: float", "+ history:  List<BalanceChange>"],
+      "methods": ["+ deposit(float): void", "+ withdraw(float): void", "+  transfer(Account, float): void"]
+    },
+    {
+      "id": "RiskManagementModule",
+      "name": "RiskManagementModule",
+      "type": "class",
+      "attributes": [],
+      "methods": ["+ updateAccountBalance(Account): void"]
+    },
+    {
+      "id": "FraudDetectionService",
+      "name": "FraudDetectionService",
+      "type": "class",
+      "attributes": [],
+      "methods": ["+ updateAccountBalance(Account): void"]
+    },
+    {
+      "id": "CustomerNotificationService",
+      "name": "CustomerNotificationService",
+      "type": "class",
+      "attributes": [],
+      "methods": ["+ updateAccountBalance(Account): void"]
+    },
+    {
+      "id": "ReversalStrategy",
+      "name": "ReversalStrategy",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["+ reverseBalanceChange(BalanceChange): void"]
+    },
+    {
+      "id": "ConcreteReversalStrategy",
+      "name": "ConcreteReversalStrategy",
+      "type": "class",
+      "attributes": [],
+      "methods": ["+ reverseBalanceChange(BalanceChange): void"]
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "RiskManagementModule"
+    },
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "FraudDetectionService"
+    },
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "CustomerNotificationService"
+    },
+    {
+      "type": "dependency",
+      "sourceId": "RiskManagementModule",
+      "targetId": "ReversalStrategy"
+    },
+    {
+      "type": "dependency",
+      "sourceId": "FraudDetectionService",
+      "targetId": "ReversalStrategy"
+    },
+    {
+      "type": "dependency",
+      "sourceId": "CustomerNotificationService",
+      "targetId": "ReversalStrategy"
+    }
+  ]
+}

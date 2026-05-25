@@ -1,0 +1,80 @@
+ python benchmark_gof.py --session GOF-007 --max-iters 4 --warmup-iters 1
+
+============================================================
+Session  : GOF-007
+Objective: Design a text editor system where the document state can be saved as a snapshot ...
+LLM      : LOCAL llama3.1:8b (Ollama)  |  AI agent: ON
+============================================================
+
+  [LLM_ONLY]
+LLM Ollama (local)      = OK
+LLM Model               = llama3.1:8b
+Elapsed wall time       = 613.57 s
+Avg CPU utilization     = 58.6 %
+Return code             = 0
+stdout length           = 1704 chars  cleaned=1702
+    iter 1: ACCEPTED [warmup]  E=10059.875J  Phi=17.00  (Phi/E)=1.6899/kJ  Rg=0.0000  pattern=Memento+Observer
+LLM Ollama (local)      = OK
+LLM Model               = llama3.1:8b
+Elapsed wall time       = 820.82 s
+Avg CPU utilization     = 62.8 %
+Return code             = 0
+stdout length           = 1958 chars  cleaned=1956
+    iter 2: ACCEPTED  E=14434.213J  Phi=13.00  (Phi/E)=0.9006/kJ  Rg=0.0000  pattern=Memento+Observer
+LLM Ollama (local)      = OK
+LLM Model               = llama3.1:8b
+Elapsed wall time       = 651.33 s
+Avg CPU utilization     = 56.6 %
+Return code             = 0
+stdout length           = 1574 chars  cleaned=1543
+    iter 3: REJECTED  (Unknown targetId 'Memento')
+LLM Ollama (local)      = OK
+LLM Model               = llama3.1:8b
+Elapsed wall time       = 610.62 s
+Avg CPU utilization     = 57.0 %
+Return code             = 0
+stdout length           = 1075 chars  cleaned=1065
+    iter 4: ACCEPTED  E=9752.653J  Phi=8.00  (Phi/E)=0.8203/kJ  Rg=0.0000  pattern=Memento+Observer
+    SUMMARY: ACCEPTED  best_iter=2  best_Phi/E=0.9006/kJ  total_energy=34502.510J
+
+  [LLM_AI]
+LLM Ollama (local)      = OK
+LLM Model               = llama3.1:8b
+Elapsed wall time       = 756.51 s
+Avg CPU utilization     = 57.6 %
+Return code             = 0
+stdout length           = 1303 chars  cleaned=1301
+    iter 1: ACCEPTED [warmup]  E=12207.676J  Phi=11.00  (Phi/E)=0.9011/kJ  Rg=1.4285  pattern=Memento+Observer
+LLM Ollama (local)      = OK
+LLM Model               = llama3.1:8b
+Elapsed wall time       = 914.55 s
+Avg CPU utilization     = 58.6 %
+Return code             = 0
+stdout length           = 2029 chars  cleaned=2027
+    iter 2: ACCEPTED  E=15013.808J  Phi=15.00  (Phi/E)=0.9991/kJ  Rg=1.5334  pattern=Observer+Memento
+LLM Ollama (local)      = OK
+LLM Model               = llama3.1:8b
+Elapsed wall time       = 1140.81 s
+Avg CPU utilization     = 57.7 %
+Return code             = 0
+stdout length           = 1454 chars  cleaned=1431
+    iter 3: ACCEPTED  E=18439.976J  Phi=9.00  (Phi/E)=0.4881/kJ  Rg=1.5093  pattern=Observer+Memento
+LLM Ollama (local)      = OK
+LLM Model               = llama3.1:8b
+Elapsed wall time       = 1458.25 s
+Avg CPU utilization     = 57.9 %
+Return code             = 0
+stdout length           = 2271 chars  cleaned=2249
+    iter 4: ACCEPTED  E=23656.125J  Phi=20.00  (Phi/E)=0.8454/kJ  Rg=1.4283  pattern=Observer+Memento
+    SUMMARY: ACCEPTED  best_iter=2  best_Phi/E=0.9991/kJ  total_energy=57109.909J
+
+--- Phi/E comparison ---
+  LLM-only  Phi/E=0.9006/kJ  energy=34502.510J  accepted=2
+  LLM+AI    Phi/E=0.9991/kJ  energy=57109.909J  accepted=3
+  Phi/E ratio (AI/LLM): 1.11x  ->  [BETTER]  +10.9%  — AI context improved the solution
+  AI detected : Observer  (confidence=1.00)  top3=['Observer', 'Memento', 'Bridge']
+  Rg (mean VFE): 1.4283  |  Rg > 0: True  — belief update active
+  PlantUML (AI): results\GOF-007_AI.puml
+  PlantUML (LLM): results\GOF-007_LLM.puml
+
+Results: results\GOF-007_gof_20260523_140057.csv

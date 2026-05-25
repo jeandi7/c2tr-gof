@@ -1,0 +1,89 @@
+{
+  "pattern": "Memento + Observer",
+  "patterns": ["Memento", "Observer"],
+  "classes": [
+    {
+      "id": "Document",
+      "name": "Document",
+      "type": "class",
+      "attributes": ["+ id: int", "+ content: string"],
+      "methods": ["+ save(): void"]
+    },
+    {
+      "id": "Memento",
+      "name": "Memento",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["+ getState(): DocumentState"]
+    },
+    {
+      "id": "DocumentState",
+      "name": "DocumentState",
+      "type": "class",
+      "attributes": ["+ content: string"],
+      "methods": []
+    },
+    {
+      "id": "Caretaker",
+      "name": "Caretaker",
+      "type": "class",
+      "attributes": [],
+      "methods": ["+ save(memento: Memento): void", "+ restore():  Document"]
+    },
+    {
+      "id": "DocumentObserver",
+      "name": "DocumentObserver",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["+ update(document: Document): void"]
+    },
+    {
+      "id": "ToolbarView",
+      "name": "ToolbarView",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "StatusBarView",
+      "name": "StatusBarView",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PreviewPanelView",
+      "name": "PreviewPanelView",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "Document",
+      "targetId": "Memento"
+    },
+    {
+      "type": "dependency",
+      "sourceId": "Caretaker",
+      "targetId": "DocumentState"
+    },
+    {
+      "type": "inheritance",
+      "sourceId": "ToolbarView",
+      "targetId": "DocumentObserver"
+    },
+    {
+      "type": "association",
+      "sourceId": "StatusBarView",
+      "targetId": "DocumentObserver"
+    },
+    {
+      "type": "composition",
+      "sourceId": "PreviewPanelView",
+      "targetId": "DocumentObserver"
+    }
+  ]
+}

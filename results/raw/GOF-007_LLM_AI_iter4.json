@@ -1,0 +1,114 @@
+{
+  "pattern": "Memento + Observer",
+  "patterns": ["Memento", "Observer"],
+  "classes": [
+    {
+      "id": "Document",
+      "name": "Document",
+      "type": "class",
+      "attributes": [
+        "+ id: String",
+        "+ content: String"
+      ],
+      "methods": [
+        "+ createMemento(): Memento",
+        "+ restore(Memento): void",
+        "+ attach(o: Observer): void",
+        "+ detach(o: Observer): void",
+        "+ notify(): void"
+      ]
+    },
+    {
+      "id": "Memento",
+      "name": "Memento",
+      "type": "class",
+      "attributes": [
+        "# state: String"
+      ],
+      "methods": [
+        "# save(): void",
+        "# restore(): void"
+      ]
+    },
+    {
+      "id": "Caretaker",
+      "name": "Caretaker",
+      "type": "class",
+      "attributes": [
+        "+ history: List<Memento>"
+      ],
+      "methods": [
+        "+ addMemento(Memento): void",
+        "+ removeMemento(): void"
+      ]
+    },
+    {
+      "id": "Observer",
+      "name": "Observer",
+      "type": "interface",
+      "attributes": [],
+      "methods": [
+        "- update(): void"
+      ]
+    },
+    {
+      "id": "Toolbar",
+      "name": "Toolbar",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "StatusBar",
+      "name": "StatusBar",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PreviewPanel",
+      "name": "PreviewPanel",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "Document",
+      "targetId": "Memento",
+      "label": "history"
+    },
+    {
+      "type": "composition",
+      "sourceId": "Caretaker",
+      "targetId": "Memento",
+      "label": "history"
+    },
+    {
+      "type": "association",
+      "sourceId": "Document",
+      "targetId": "Observer",
+      "label": "observers"
+    },
+    {
+      "type": "dependency",
+      "sourceId": "Toolbar",
+      "targetId": "Document",
+      "label": ""
+    },
+    {
+      "type": "dependency",
+      "sourceId": "StatusBar",
+      "targetId": "Document",
+      "label": ""
+    },
+    {
+      "type": "dependency",
+      "sourceId": "PreviewPanel",
+      "targetId": "Document",
+      "label": ""
+    }
+  ]
+}

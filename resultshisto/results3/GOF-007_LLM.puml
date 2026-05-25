@@ -1,0 +1,38 @@
+@startuml
+title GoF Pattern : Memento + Observer
+
+note as GoFLabel
+  **<<Memento + Observer>>**
+end note
+
+class Document {
+  + id: int
+  + content: string
+  + save(): void
+}
+interface Memento {
+  + getState(): any
+}
+class DocumentMemento {
+}
+class DocumentEditor {
+  + document: Document
+  + save(): void
+  + restoreMemento(Memento m): void
+}
+class Toolbar {
+}
+class StatusBar {
+}
+class PreviewPanel {
+}
+
+DocumentEditor --> Document
+DocumentEditor *--> Toolbar
+DocumentEditor *--> StatusBar
+DocumentEditor *--> PreviewPanel
+Toolbar ..> Document
+StatusBar ..> Document
+PreviewPanel ..> Document
+GoFLabel .. Document
+@enduml

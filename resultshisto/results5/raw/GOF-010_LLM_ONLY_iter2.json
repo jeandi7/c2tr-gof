@@ -1,0 +1,75 @@
+{
+  "pattern": "Observer + Memento",
+  "patterns": ["Observer", "Memento"],
+  "classes": [
+    {
+      "id": "Account",
+      "name": "Account",
+      "type": "class",
+      "attributes": ["+ balance: float", "+ history:  List<BalanceChange>"],
+      "methods": ["+ deposit(float): void", "+  withdraw(float): void", "+ transfer(Account, float): void"]
+    },
+    {
+      "id": "RiskManagementModule",
+      "name": "RiskManagementModule",
+      "type": "class",
+      "attributes": [],
+      "methods": ["+ updateAccountBalance(Account): void"]
+    },
+    {
+      "id": "FraudDetectionService",
+      "name": "FraudDetectionService",
+      "type": "class",
+      "attributes": [],
+      "methods": ["+ updateAccountBalance(Account): void"]
+    },
+    {
+      "id": "CustomerNotificationService",
+      "name": "CustomerNotificationService",
+      "type": "class",
+      "attributes": [],
+      "methods": ["+ updateAccountBalance(Account): void"]
+    },
+    {
+      "id": "BalanceChange",
+      "name": "BalanceChange",
+      "type": "class",
+      "attributes": ["+ timestamp: Date", "+ amount: float"],
+      "methods": []
+    },
+    {
+      "id": "AccountHistory",
+      "name": "AccountHistory",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["+ restore(Account, BalanceChange): void"]
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "RiskManagementModule"
+    },
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "FraudDetectionService"
+    },
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "CustomerNotificationService"
+    },
+    {
+      "type": "composition",
+      "sourceId": "Account",
+      "targetId": "BalanceChange"
+    },
+    {
+      "type": "dependency",
+      "sourceId": "RiskManagementModule",
+      "targetId": "AccountHistory"
+    }
+  ]
+}

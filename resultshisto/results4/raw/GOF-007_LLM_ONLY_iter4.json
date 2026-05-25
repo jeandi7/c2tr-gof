@@ -1,0 +1,87 @@
+{
+  "pattern": "Memento + Observer",
+  "patterns": ["Memento", "Observer"],
+  "classes": [
+    {
+      "id": "Document",
+      "name": "Document",
+      "type": "class",
+      "attributes": ["+ id: int", "+ content: string"],
+      "methods": ["+ save(): void", "+ restore(): void"]
+    },
+    {
+      "id": "Memento",
+      "name": "Memento",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["+ getState(): any"]
+    },
+    {
+      "id": "DocumentMemento",
+      "name": "DocumentMemento",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DocumentEditor",
+      "name": "DocumentEditor",
+      "type": "class",
+      "attributes": ["+ document: Document"],
+      "methods": ["+ save(): void", "+ restore(): void"]
+    },
+    {
+      "id": "Toolbar",
+      "name": "Toolbar",
+      "type": "interface",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "Statusbar",
+      "name": "Statusbar",
+      "type": "interface",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PreviewPanel",
+      "name": "PreviewPanel",
+      "type": "interface",
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "DocumentEditor",
+      "targetId": "Document",
+      "label": ""
+    },
+    {
+      "type": "dependency",
+      "sourceId": "Toolbar",
+      "targetId": "DocumentEditor",
+      "label": ""
+    },
+    {
+      "type": "dependency",
+      "sourceId": "Statusbar",
+      "targetId": "DocumentEditor",
+      "label": ""
+    },
+    {
+      "type": "dependency",
+      "sourceId": "PreviewPanel",
+      "targetId": "DocumentEditor",
+      "label": ""
+    },
+    {
+      "type": "composition",
+      "sourceId": "DocumentMemento",
+      "targetId": "Document",
+      "label": ""
+    }
+  ]
+}

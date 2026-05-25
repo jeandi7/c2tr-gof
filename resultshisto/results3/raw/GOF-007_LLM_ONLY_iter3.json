@@ -1,0 +1,99 @@
+{
+  "pattern": "Memento + Observer",
+  "patterns": ["Memento", "Observer"],
+  "classes": [
+    {
+      "id": "Document",
+      "name": "Document",
+      "type": "class",
+      "attributes": ["+ id: int", "+ content: string"],
+      "methods": ["+ save(): void"]
+    },
+    {
+      "id": "Memento",
+      "name": "Memento",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["+ getState(): any"]
+    },
+    {
+      "id": "DocumentMemento",
+      "name": "DocumentMemento",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "DocumentEditor",
+      "name": "DocumentEditor",
+      "type": "class",
+      "attributes": ["+ document: Document"],
+      "methods": ["+ save(): void", "+ restoreMemento(Memento m): void"]
+    },
+    {
+      "id": "Toolbar",
+      "name": "Toolbar",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "StatusBar",
+      "name": "StatusBar",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PreviewPanel",
+      "name": "PreviewPanel",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "DocumentEditor",
+      "targetId": "Document",
+      "label": ""
+    },
+    {
+      "type": "composition",
+      "sourceId": "DocumentEditor",
+      "targetId": "Toolbar",
+      "label": ""
+    },
+    {
+      "type": "composition",
+      "sourceId": "DocumentEditor",
+      "targetId": "StatusBar",
+      "label": ""
+    },
+    {
+      "type": "composition",
+      "sourceId": "DocumentEditor",
+      "targetId": "PreviewPanel",
+      "label": ""
+    },
+    {
+      "type": "dependency",
+      "sourceId": "Toolbar",
+      "targetId": "Document",
+      "label": ""
+    },
+    {
+      "type": "dependency",
+      "sourceId": "StatusBar",
+      "targetId": "Document",
+      "label": ""
+    },
+    {
+      "type": "dependency",
+      "sourceId": "PreviewPanel",
+      "targetId": "Document",
+      "label": ""
+    }
+  ]
+}

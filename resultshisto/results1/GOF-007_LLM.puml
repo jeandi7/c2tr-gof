@@ -1,0 +1,40 @@
+@startuml
+title GoF Pattern : Memento + Observer
+
+note as GoFLabel
+  **<<Memento + Observer>>**
+end note
+
+class TextEditor {
+  + content: String
+  + views: List<VisualComponent>
+  + saveSnapshot(): void
+  + restoreDocument(DocumentSnapshot): void
+}
+class Document {
+  + content: String
+  # changeContent(String): void
+}
+class DocumentSnapshot {
+}
+interface VisualComponent {
+  # update(): void
+}
+class Toolbar {
+  + editor: Editor
+  # updateEditor(Editor): void
+}
+class StatusBar {
+  + editor: Editor
+  # updateEditor(Editor): void
+}
+class PreviewPanel {
+  + document: Document
+  # updateDocument(Document): void
+}
+
+Editor --> Toolbar
+Editor --> StatusBar
+Document *--> Memento
+GoFLabel .. TextEditor
+@enduml

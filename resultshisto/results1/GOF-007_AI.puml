@@ -1,0 +1,42 @@
+@startuml
+title GoF Pattern : Observer + Memento
+
+note as GoFLabel
+  **<<Observer + Memento>>**
+end note
+
+class Document {
+  + id: Integer
+  + content: String
+  + createMemento(): Memento
+  + restore(Memento m): void
+  + attach(o: Observer): void
+  + detach(o: Observer): void
+  + notify(): void
+}
+class Toolbar {
+  # toolbarItems: List<ToolbarItem>
+  # update(Document d): void
+  # addToolbarItem(ToolbarItem ti): void
+}
+class StatusBar {
+  # statusBarItems: List<StatusBarItem>
+  # update(Document d): void
+  # addStatusBarItem(StatusBarItem si): void
+}
+class PreviewPanel {
+  + previewContent: String
+  + update(Document d): void
+  + refresh(): void
+}
+interface Memento {
+  # restore(Document d): void
+}
+
+Document --> Toolbar
+Document --> StatusBar
+Document --> PreviewPanel
+Toolbar *--> Document
+StatusBar *--> Document
+GoFLabel .. Document
+@enduml

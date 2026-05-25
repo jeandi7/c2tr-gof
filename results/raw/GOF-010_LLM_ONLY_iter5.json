@@ -1,0 +1,63 @@
+{
+  "pattern": "Observer + Memento",
+  "patterns": ["Observer", "Memento"],
+  "classes": [
+    {
+      "id": "Account",
+      "name": "Account",
+      "type": "class",
+      "attributes": ["+ balance: double"],
+      "methods": ["- getBalance(): double"]
+    },
+    {
+      "id": "RiskManagementModule",
+      "name": "RiskManagementModule",
+      "type": "class",
+      "attributes": [],
+      "methods": ["- updateAccountBalance(double): void"]
+    },
+    {
+      "id": "FraudDetectionService",
+      "name": "FraudDetectionService",
+      "type": "class",
+      "attributes": [],
+      "methods": ["- updateAccountBalance(double): void"]
+    },
+    {
+      "id": "CustomerNotificationService",
+      "name": "CustomerNotificationService",
+      "type": "class",
+      "attributes": [],
+      "methods": ["- updateAccountBalance(double): void"]
+    },
+    {
+      "id": "AccountHistory",
+      "name": "AccountHistory",
+      "type": "class",
+      "attributes": ["+ history: List<AccountState>"],
+      "methods": ["- addState(AccountState): void", "- restoreState(int):  void"]
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "RiskManagementModule"
+    },
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "FraudDetectionService"
+    },
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "CustomerNotificationService"
+    },
+    {
+      "type": "composition",
+      "sourceId": "AccountHistory",
+      "targetId": "AccountState"
+    }
+  ]
+}

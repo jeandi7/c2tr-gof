@@ -1,0 +1,70 @@
+{
+  "pattern": "Command + Memento",
+  "patterns": ["Command", "Memento"],
+  "classes": [
+    {
+      "id": "1",
+      "name": "Account",
+      "type": "class",
+      "attributes": ["+ balance: float", "+ history:  List<BalanceChange>"],
+      "methods": ["+ deposit(float): void", "+ withdraw(float): void"]
+    },
+    {
+      "id": "2",
+      "name": "BalanceChange",
+      "type": "class",
+      "attributes": ["+ timestamp: Date", "+ amount: float"],
+      "methods": []
+    },
+    {
+      "id": "3",
+      "name": "RiskManagementModule",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["- updateAccountBalance(Account): void"]
+    },
+    {
+      "id": "4",
+      "name": "FraudDetectionService",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["- checkForSuspiciousActivity(Account): boolean"]
+    },
+    {
+      "id": "5",
+      "name": "CustomerNotificationService",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["- notifyCustomerOfBalanceChange(Account): void"]
+    },
+    {
+      "id": "6",
+      "name": "AccountHistory",
+      "type": "class",
+      "attributes": ["+ account: Account", "+ changes:  List<BalanceChange>"],
+      "methods": []
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "1",
+      "targetId": "3"
+    },
+    {
+      "type": "association",
+      "sourceId": "1",
+      "targetId": "4"
+    },
+    {
+      "type": "association",
+      "sourceId": "1",
+      "targetId": "5"
+    },
+    {
+      "type": "composition",
+      "sourceId": "6",
+      "targetId": "2"
+    }
+  ]
+}

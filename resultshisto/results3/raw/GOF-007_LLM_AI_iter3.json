@@ -1,0 +1,73 @@
+{
+  "pattern": "Observer + Memento",
+  "patterns": ["Observer", "Memento"],
+  "classes": [
+    {
+      "id": "Document",
+      "name": "Document",
+      "type": "class",
+      "attributes": ["+ document: String"],
+      "methods": ["+ createMemento(): Memento", "+ restore(m: Memento):  void"]
+    },
+    {
+      "id": "Toolbar",
+      "name": "Toolbar",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["- update(): void"]
+    },
+    {
+      "id": "Statusbar",
+      "name": "Statusbar",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["- update(): void"]
+    },
+    {
+      "id": "PreviewPanel",
+      "name": "PreviewPanel",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["- update(): void"]
+    },
+    {
+      "id": "Memento",
+      "name": "Memento",
+      "type": "class",
+      "attributes": [],
+      "methods": ["+ save(): Memento", "+ restore(m: Memento): void"]
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "Document",
+      "targetId": "Toolbar",
+      "label": "observers"
+    },
+    {
+      "type": "association",
+      "sourceId": "Document",
+      "targetId": "Statusbar",
+      "label": "observers"
+    },
+    {
+      "type": "association",
+      "sourceId": "Document",
+      "targetId": "PreviewPanel",
+      "label": "observers"
+    },
+    {
+      "type": "composition",
+      "sourceId": "Caretaker",
+      "targetId": "Memento",
+      "label": "history"
+    },
+    {
+      "type": "association",
+      "sourceId": "Caretaker",
+      "targetId": "Document",
+      "label": ""
+    }
+  ]
+}

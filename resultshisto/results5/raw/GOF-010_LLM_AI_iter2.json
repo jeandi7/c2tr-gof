@@ -1,0 +1,70 @@
+{
+  "pattern": "Observer + Strategy",
+  "patterns": ["Observer", "Strategy"],
+  "classes": [
+    {
+      "id": "Account",
+      "name": "Account",
+      "type": "class",
+      "attributes": ["+ balance: float", "+ history:  List<BalanceChange>"],
+      "methods": ["+ deposit(float): void", "+ withdraw(float): void", "+  transfer(Account, float): void"]
+    },
+    {
+      "id": "RiskManagementModule",
+      "name": "RiskManagementModule",
+      "type": "class",
+      "attributes": ["- riskLevel: int"],
+      "methods": ["+ updateRiskLevel(int): void"]
+    },
+    {
+      "id": "FraudDetectionService",
+      "name": "FraudDetectionService",
+      "type": "class",
+      "attributes": ["- detectionThreshold: float"],
+      "methods": ["+ detectFraud(float): bool"]
+    },
+    {
+      "id": "CustomerNotificationService",
+      "name": "CustomerNotificationService",
+      "type": "class",
+      "attributes": ["- notificationMethod: string"],
+      "methods": ["+ notifyCustomer(string, float): void"]
+    },
+    {
+      "id": "BalanceChangeHandler",
+      "name": "BalanceChangeHandler",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["+ handle(BalanceChange): void"]
+    },
+    {
+      "id": "ConcreteBalanceChangeHandler",
+      "name": "ConcreteBalanceChangeHandler",
+      "type": "class",
+      "attributes": [],
+      "methods": ["+ handle(BalanceChange): void"]
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "RiskManagementModule"
+    },
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "FraudDetectionService"
+    },
+    {
+      "type": "association",
+      "sourceId": "Account",
+      "targetId": "CustomerNotificationService"
+    },
+    {
+      "type": "composition",
+      "sourceId": "BalanceChangeHandler",
+      "targetId": "ConcreteBalanceChangeHandler"
+    }
+  ]
+}

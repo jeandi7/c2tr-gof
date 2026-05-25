@@ -1,0 +1,70 @@
+{
+  "pattern": "Memento + Observer",
+  "patterns": ["Memento", "Observer"],
+  "classes": [
+    {
+      "id": "Document",
+      "name": "Document",
+      "type": "class",
+      "attributes": ["+ id: int", "+ content: string"],
+      "methods": ["+ save(): void"]
+    },
+    {
+      "id": "Memento",
+      "name": "Memento",
+      "type": "class",
+      "attributes": ["+ documentState: Document"],
+      "methods": ["+ save(): void", "+ restore(): void"]
+    },
+    {
+      "id": "DocumentObserver",
+      "name": "DocumentObserver",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["+ update(): void"]
+    },
+    {
+      "id": "Toolbar",
+      "name": "Toolbar",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "StatusBar",
+      "name": "StatusBar",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    },
+    {
+      "id": "PreviewPanel",
+      "name": "PreviewPanel",
+      "type": "class",
+      "attributes": [],
+      "methods": []
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "Document",
+      "targetId": "Memento"
+    },
+    {
+      "type": "dependency",
+      "sourceId": "Toolbar",
+      "targetId": "DocumentObserver"
+    },
+    {
+      "type": "dependency",
+      "sourceId": "StatusBar",
+      "targetId": "DocumentObserver"
+    },
+    {
+      "type": "dependency",
+      "sourceId": "PreviewPanel",
+      "targetId": "DocumentObserver"
+    }
+  ]
+}

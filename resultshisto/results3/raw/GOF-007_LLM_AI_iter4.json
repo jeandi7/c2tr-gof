@@ -1,0 +1,41 @@
+{
+  "pattern": "Memento + Observer",
+  "patterns": ["Memento", "Observer"],
+  "classes": [
+    {
+      "id": "Document",
+      "name": "Document",
+      "type": "class",
+      "attributes": ["+ content: String", "+ views: List<Viewer>"],
+      "methods": ["+ attach(viewer: Viewer): void", "+ detach(viewer:  Viewer): void", "+ notify(): void", "+ saveSnapshot(): Memento"]
+    },
+    {
+      "id": "Memento",
+      "name": "Memento",
+      "type": "class",
+      "attributes": ["+ snapshot: String"],
+      "methods": ["+ save(): void", "+ restore(document: Document): void"]
+    },
+    {
+      "id": "Viewer",
+      "name": "Viewer",
+      "type": "interface",
+      "attributes": [],
+      "methods": ["update(document: Document): void"]
+    }
+  ],
+  "relationships": [
+    {
+      "type": "association",
+      "sourceId": "Document",
+      "targetId": "Memento",
+      "label": "history"
+    },
+    {
+      "type": "association",
+      "sourceId": "Document",
+      "targetId": "Viewer",
+      "label": "views"
+    }
+  ]
+}

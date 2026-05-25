@@ -1,0 +1,33 @@
+@startuml
+title GoF Pattern : Observer + Memento
+
+note as GoFLabel
+  **<<Observer + Memento>>**
+end note
+
+class Document {
+  + content: String
+  + createMemento(): Memento
+  + restore(Memento):  void
+}
+interface Toolbar {
+  - update(): void
+}
+interface StatusBar {
+  - update(): void
+}
+interface PreviewPanel {
+  - update(): void
+}
+class Caretaker {
+  + history: List<Memento>
+  + save(Document): Memento
+  + restore(Memento): void
+}
+
+Document --> Toolbar
+Document --> StatusBar
+Document --> PreviewPanel
+Document --> Caretaker
+GoFLabel .. Document
+@enduml

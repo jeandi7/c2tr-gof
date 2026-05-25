@@ -1,0 +1,40 @@
+@startuml
+title GoF Pattern : Observer + Strategy
+
+note as GoFLabel
+  **<<Observer + Strategy>>**
+end note
+
+class Account {
+  + balance: float
+  + riskLevel: int
+  + updateBalance(): void
+}
+class RiskManagementModule {
+  - account: Account
+  - notifyAccountChanges(): void
+}
+class FraudDetectionService {
+  - account: Account
+  - detectFraud(): void
+}
+class CustomerNotificationService {
+  - account: Account
+  - sendNotifications(): void
+}
+interface AccountBalanceObserver {
+  + updateAccountBalance(account: Account): void
+}
+class Strategy {
+  - account: Account
+  - execute(): void
+}
+
+Account --> RiskManagementModule
+Account --> FraudDetectionService
+Account --> CustomerNotificationService
+RiskManagementModule ..> Strategy
+FraudDetectionService ..> Strategy
+CustomerNotificationService ..> Strategy
+GoFLabel .. Account
+@enduml
