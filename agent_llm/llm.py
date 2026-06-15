@@ -49,9 +49,9 @@ def _call_mlx(prompt: str) -> tuple[str, float]:
         prompt=formatted,
         max_tokens=2000,
         verbose=False,
-        temp=0.2,
-        repetition_penalty=1.1,
-        top_p=0.9,
+        # temperature=0.2, #temp ou temperature
+        # repetition_penalty=1.1,
+        # top_p=0.9,
     )
     elapsed = time.perf_counter() - wall_start
 

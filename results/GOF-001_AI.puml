@@ -1,0 +1,14 @@
+@startuml
+title GoF Pattern : Singleton
+
+note as GoFLabel
+  **<<Singleton>>**
+end note
+
+class Logger <<Singleton>> {
+  + instance: Logger
+  + getInstance(): Logger
+}
+
+GoFLabel .. Logger
+@enduml

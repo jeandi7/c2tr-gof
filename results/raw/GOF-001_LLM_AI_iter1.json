@@ -1,0 +1,20 @@
+{
+  "pattern": "Singleton",
+  "patterns": ["Singleton"],
+  "classes": [
+    {
+      "id": "Singleton",
+      "name": "Logger",
+      "type": "class",
+      "attributes": ["+ instance: Logger"],
+      "methods": ["+ getInstance(): Logger"]
+    }
+  ],
+  "relationships": [
+    {
+      "type": "inheritance",
+      "sourceId": "Singleton",
+      "targetId": "Logger"
+    }
+  ]
+}
